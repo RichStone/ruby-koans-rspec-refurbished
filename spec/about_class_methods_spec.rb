@@ -7,15 +7,15 @@ describe "Class Methods" do
 
   it "should demonstrate objects_are_objects" do
     fido = Dog.new
-    fido.is_a?(Object).should eql __
+    expect(fido.is_a?(Object)).to eql __
   end
 
   it "should demonstrate classes_are_classes" do
-    Dog.is_a?(Class).should eql __
+    expect(Dog.is_a?(Class)).to eql __
   end
 
   it "should demonstrate classes_are_objects_too" do
-    Dog.is_a?(Object).should eql __
+    expect(Dog.is_a?(Object)).to eql __
   end
 
   it "should demonstrate objects_have_methods" do
@@ -34,7 +34,7 @@ describe "Class Methods" do
       :fidos_wag
     end
 
-    fido.wag.should eql __
+    expect(fido.wag).to eql __
   end
 
   it "should demonstrate other_objects_are_not_affected_by_these_singleton_methods" do
@@ -61,13 +61,13 @@ describe "Class Methods" do
   end
 
   it "should demonstrate since_classes_are_objects_you_can_define_singleton_methods_on_them_too" do
-    Dog2.wag.should eql __
+    expect(Dog2.wag).to eql __
   end
 
   it "should demonstrate class_methods_are_independent_of_instance_methods" do
     fido = Dog2.new
-    fido.wag.should eql __
-    Dog2.wag.should eql __
+    expect(fido.wag).to eql __
+    expect(Dog2.wag).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -83,8 +83,8 @@ describe "Class Methods" do
   it "should demonstrate classes_and_instances_do_not_share_instance_variables" do
     fido = Dog.new
     fido.name = "Fido"
-    fido.name.should eql __
-    Dog.name.should eql __
+    expect(fido.name).to eql __
+    expect(Dog.name).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -96,7 +96,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate you_can_define_class_methods_inside_the_class" do
-    Dog.a_class_method.should eql __
+    expect(Dog.a_class_method).to eql __
   end
 
 
@@ -107,7 +107,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate class_statements_return_the_value_of_their_last_expression" do
-    LastExpressionInClassStatement.should eql __
+    expect(LastExpressionInClassStatement).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -117,7 +117,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate self_while_inside_class_is_class_object_not_instance" do
-    (Dog == SelfInsideOfClassStatement).should eql __
+    expect(Dog == SelfInsideOfClassStatement).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -129,7 +129,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate you_can_use_self_instead_of_an_explicit_reference_to_dog" do
-    Dog.class_method2.should eql __
+    expect(Dog.class_method2).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -143,7 +143,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate heres_still_another_way_to_write_class_methods" do
-    Dog.another_class_method.should eql __
+    expect(Dog.another_class_method).to eql __
   end
 
   # THINK ABOUT IT:
@@ -166,6 +166,6 @@ describe "Class Methods" do
 
   it "should demonstrate heres_an_easy_way_to_call_class_methods_from_instance_methods" do
     fido = Dog.new
-    fido.class.another_class_method.should eql __
+    expect(fido.class.another_class_method).to eql __
   end
 end

@@ -25,21 +25,21 @@ describe "Inheritance" do
   end
 
   it "should demonstrate subclasses_have_the_parent_as_an_ancestor" do
-    Chihuahua.ancestors.include?(Dog).should eql __
+    expect(Chihuahua.ancestors.include?(Dog)).to eql __
   end
 
   it "should demonstrate all_classes_ultimately_inherit_from_object" do
-    Chihuahua.ancestors.include?(Object).should eql __
+    expect(Chihuahua.ancestors.include?(Object)).to eql __
   end
 
   it "should demonstrate subclasses_inherit_behavior_from_parent_class" do
     chico = Chihuahua.new("Chico")
-    chico.name.should eql __
+    expect(chico.name).to eql __
   end
 
   it "should demonstrate subclasses_add_new_behavior" do
     chico = Chihuahua.new("Chico")
-    chico.wag.should eql __
+    expect(chico.wag).to eql __
 
     expect{
       fido = Dog.new("Fido")
@@ -50,10 +50,10 @@ describe "Inheritance" do
 
   it "should demonstrate subclasses_can_modify_existing_behavior" do
     chico = Chihuahua.new("Chico")
-    chico.bark.should eql __
+    expect(chico.bark).to eql __
 
     fido = Dog.new("Fido")
-    fido.bark.should eql __
+    expect(fido.bark).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -66,7 +66,7 @@ describe "Inheritance" do
 
   it "should demonstrate subclasses_can_invoke_parent_behavior_via_super" do
     ralph = BullDog.new("Ralph")
-    ralph.bark.should eql __
+    expect(ralph.bark).to eql __
   end
 
   # ------------------------------------------------------------------

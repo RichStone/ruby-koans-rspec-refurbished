@@ -25,11 +25,11 @@ describe "Scope" do
   it "should demonstrate you_can_reference_nested_classes_using_the_scope_operator" do
     fido = Jims::Dog.new
     rover = Joes::Dog.new
-    fido.identify.should eql __
-    rover.identify.should eql __
+    expect(fido.identify).to eql __
+    expect(rover.identify).to eql __
 
-    (fido.class != rover.class).should eql __
-    (Jims::Dog != Joes::Dog).should eql __
+    expect(fido.class != rover.class).to eql __
+    expect(Jims::Dog != Joes::Dog).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -38,15 +38,15 @@ describe "Scope" do
   end
 
   it "should demonstrate bare_bones_class_names_assume_the_current_scope" do
-    (AboutScope::String == String).should eql __
+    expect(AboutScope::String == String).to eql __
   end
 
   it "should demonstrate nested_string_is_not_the_same_as_the_system_string" do
-    (String == "HI".class).should eql __
+    expect(String == "HI".class).to eql __
   end
 
   it "should demonstrate use_the_prefix_scope_operator_to_force_the_global_scope" do
-    (::String == "HI".class).should eql __
+    expect(::String == "HI".class).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -54,7 +54,7 @@ describe "Scope" do
   PI = 3.1416
 
   it "should demonstrate constants_are_defined_with_an_initial_uppercase_letter" do
-    PI.should eql __
+    expect(PI).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -62,17 +62,17 @@ describe "Scope" do
   MyString = ::String
 
   it "should demonstrate class_names_are_just_constants" do
-    (MyString == ::String).should eql __
-    (MyString == "HI".class).should eql __
+    expect(MyString == ::String).to eql __
+    expect(MyString == "HI".class).to eql __
   end
 
   it "should demonstrate constants_can_be_looked_up_explicitly" do
-    (PI == AboutScope.const_get("PI")).should eql __
-    (MyString == AboutScope.const_get("MyString")).should eql __
+    expect(PI == AboutScope.const_get("PI")).to eql __
+    expect(MyString == AboutScope.const_get("MyString")).to eql __
   end
 
   it "should demonstrate you_can_get_a_list_of_constants_for_any_class_or_module" do
-    Jims.constants.should eql __
-    expect(Object.constants.size).should be > _n_
+    expect(Jims.constants).to eql __
+    expect(expect(Object.constants.size)).to be > _n_
   end
 end
