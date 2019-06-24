@@ -7,16 +7,16 @@ describe "Constants" do
   C = "nested"
 
   it "should demonstrate nested_constants_may_also_be_referenced_with_relative_paths" do
-    C.should eql __
+    expect(C).to eql __
   end
 
   it "should demonstrate top_level_constants_are_referenced_by_double_colons" do
-    ::C.should eql __
+    expect(::C).to eql __
   end
 
   it "should demonstrate nested_constants_are_referenced_by_their_complete_path" do
-    AboutConstants::C.should eql __
-    ::AboutConstants::C.should eql __
+    expect(AboutConstants::C).to eql __
+    expect(::AboutConstants::C).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -35,7 +35,7 @@ describe "Constants" do
   end
 
   it "should demonstrate nested_classes_inherit_constants_from_enclosing_classes" do
-    Animal::NestedAnimal.new.legs_in_nested_animal.should eql __
+    expect(Animal::NestedAnimal.new.legs_in_nested_animal).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -47,7 +47,7 @@ describe "Constants" do
   end
 
   it "should demonstrate subclasses_inherit_constants_from_parent_classes" do
-    Reptile.new.legs_in_reptile.should eql __
+    expect(Reptile.new.legs_in_reptile).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -63,7 +63,7 @@ describe "Constants" do
   end
 
   it "should demonstrate who_wins_with_both_nested_and_inherited_constants" do
-    MyAnimals::Bird.new.legs_in_bird.should eql __
+    expect(MyAnimals::Bird.new.legs_in_bird).to eql __
   end
 
   # QUESTION: Which has precedence: The constant in the lexical scope,
@@ -78,7 +78,7 @@ describe "Constants" do
   end
 
   it "should demonstrate who_wins_with_explicit_scoping_on_class_definition" do
-    MyAnimals::Oyster.new.legs_in_oyster.should eql __
+    expect(MyAnimals::Oyster.new.legs_in_oyster).to eql __
   end
 
   # QUESTION: Now which has precedence: The constant in the lexical

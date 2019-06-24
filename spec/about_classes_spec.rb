@@ -7,7 +7,7 @@ describe "Classes" do
 
   it "should demonstrate instances_of_classes_can_be_created_with_new" do
     fido = Dog.new
-    fido.class.should eql __
+    expect(fido.class).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -20,10 +20,10 @@ describe "Classes" do
 
   it "should demonstrate instance_variables_can_be_set_by_assigning_to_them" do
     fido = Dog2.new
-    fido.instance_variables.should eql __
+    expect(fido.instance_variables).to eql __
 
     fido.set_name("Fido")
-    fido.instance_variables.should eql __
+    expect(fido.instance_variables).to eql __
   end
 
   it "should demonstrate instance_variables_cannot_be_accessed_outside_the_class" do
@@ -41,7 +41,7 @@ describe "Classes" do
     fido = Dog2.new
     fido.set_name("Fido")
 
-    fido.instance_variable_get("@name").should eql __
+    expect(fido.instance_variable_get("@name")).to eql __
   end
 
   it "should demonstrate you_can_rip_the_value_out_using_instance_eval" do
@@ -67,7 +67,7 @@ describe "Classes" do
     fido = Dog3.new
     fido.set_name("Fido")
 
-    fido.name.should eql __
+    expect(fido.name).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -85,7 +85,7 @@ describe "Classes" do
     fido = Dog4.new
     fido.set_name("Fido")
 
-    fido.name.should eql __
+    expect(fido.name).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -99,7 +99,7 @@ describe "Classes" do
     fido = Dog5.new
 
     fido.name = "Fido"
-    fido.name.should eql __
+    expect(fido.name).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -113,7 +113,7 @@ describe "Classes" do
 
   it "should demonstrate initialize_provides_initial_values_for_instance_variables" do
     fido = Dog6.new("Fido")
-    fido.name.should eql __
+    expect(fido.name).to eql __
   end
 
   it "should demonstrate args_to_new_must_match_initialize" do
@@ -126,7 +126,7 @@ describe "Classes" do
     fido = Dog6.new("Fido")
     rover = Dog6.new("Rover")
 
-    (rover.name != fido.name).should eql __
+    expect(rover.name != fido.name).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -155,32 +155,32 @@ describe "Classes" do
     fido = Dog7.new("Fido")
 
     fidos_self = fido.get_self
-    fidos_self.should eql __
+    expect(fidos_self).to eql __
   end
 
   it "should demonstrate to_s_provides_a_string_version_of_the_object" do
     fido = Dog7.new("Fido")
-    fido.to_s.should eql __
+    expect(fido.to_s).to eql __
   end
 
   it "should demonstrate to_s_is_used_in_string_interpolation" do
     fido = Dog7.new("Fido")
-    "My dog is #{fido}".should eql __
+    expect("My dog is #{fido}").to eql __
   end
 
   it "should demonstrate inspect_provides_a_more_complete_string_version" do
     fido = Dog7.new("Fido")
-    fido.inspect.should eql __
+    expect(fido.inspect).to eql __
   end
 
   it "should demonstrate all_objects_support_to_s_and_inspect" do
     array = [1,2,3]
 
-    array.to_s.should eql __
-    array.inspect.should eql __
+    expect(array.to_s).to eql __
+    expect(array.inspect).to eql __
 
-    "STRING".to_s.should eql __
-    "STRING".inspect.should eql __
+    expect("STRING".to_s).to eql __
+    expect("STRING".inspect).to eql __
   end
 
 end

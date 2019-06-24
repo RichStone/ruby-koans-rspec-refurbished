@@ -8,12 +8,12 @@ describe "Methods" do
 
 
   it "should demonstrate calling_global_methods" do
-    my_global_method(2,3).should eql __
+    expect(my_global_method(2,3)).to eql __
   end
 
   it "should demonstrate calling_global_methods_without_parentheses" do
     result = my_global_method 2, 3
-    result.should eql __
+    expect(result).to eql __
   end
 
   # (NOTE: We are Using eval below because the example code is
@@ -46,8 +46,8 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_with_default_values" do
-    method_with_defaults(1).should eql [1, __]
-    method_with_defaults(1, 2).should eql [1, __]
+    expect(method_with_defaults(1)).to eql [1, __]
+    expect(method_with_defaults(1, 2)).to eql [1, __]
   end
 
   # ------------------------------------------------------------------
@@ -57,10 +57,10 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_with_variable_arguments" do
-    method_with_var_args.class.should eql __
-    method_with_var_args.should eql __
-    method_with_var_args(:one).should eql __
-    method_with_var_args(:one, :two).should eql __
+    expect(method_with_var_args.class).to eql __
+    expect(method_with_var_args).to eql __
+    expect(method_with_var_args(:one)).to eql __
+    expect(method_with_var_args(:one, :two)).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -72,7 +72,7 @@ describe "Methods" do
   end
 
   it "should demonstrate method_with_explicit_return" do
-    method_with_explicit_return.should eql __
+    expect(method_with_explicit_return).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -83,7 +83,7 @@ describe "Methods" do
   end
 
   it "should demonstrate method_without_explicit_return" do
-    method_without_explicit_return.should eql __
+    expect(method_without_explicit_return).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -93,11 +93,11 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_methods_in_same_class" do
-    my_method_in_the_same_class(3,4).should eql __
+    expect(my_method_in_the_same_class(3,4)).to eql __
   end
 
   it "should demonstrate calling_methods_in_same_class_with_explicit_receiver" do
-    self.my_method_in_the_same_class(3,4).should eql __
+    expect(self.my_method_in_the_same_class(3,4)).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -108,7 +108,7 @@ describe "Methods" do
   private :my_private_method
 
   it "should demonstrate calling_private_methods_without_receiver" do
-    my_private_method.should eql __
+    expect(my_private_method).to eql __
   end
 
   it "should demonstrate calling_private_methods_with_an_explicit_receiver" do
@@ -131,7 +131,7 @@ describe "Methods" do
 
   it "should demonstrate calling_methods_in_other_objects_require_explicit_receiver" do
     rover = Dog.new
-    rover.name.should eql __
+    expect(rover.name).to eql __
   end
 
   it "should demonstrate calling_private_methods_in_other_objects" do

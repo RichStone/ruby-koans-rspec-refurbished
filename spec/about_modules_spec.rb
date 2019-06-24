@@ -38,23 +38,23 @@ describe "Modules" do
 
   it "should demonstrate normal_methods_are_available_in_the_object" do
     fido = Dog.new
-    fido.bark.should eql __
+    expect(fido.bark).to eql __
   end
 
   it "should demonstrate module_methods_are_also_available_in_the_object" do
     fido = Dog.new
-    expect(fido.set_name("Rover")).should_not raise_error(Exception)
+    expect(expect(fido.set_name("Rover"))).not_to raise_error
   end
 
   it "should demonstrate module_methods_can_affect_instance_variables_in_the_object" do
     fido = Dog.new
-    fido.name.should eql __
+    expect(fido.name).to eql __
     fido.set_name("Rover")
-    fido.name.should eql __
+    expect(fido.name).to eql __
   end
 
   it "should demonstrate classes_can_override_module_methods" do
     fido = Dog.new
-    fido.here.should eql __
+    expect(fido.here).to eql __
   end
 end

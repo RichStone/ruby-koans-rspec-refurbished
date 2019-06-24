@@ -14,7 +14,7 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate counting_lines" do
-    count_lines("example_file.txt").should eql __
+    expect(count_lines("example_file.txt")).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -29,7 +29,7 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate finding_lines" do
-    find_line("example_file.txt").should eql __
+    expect(find_line("example_file.txt")).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -74,7 +74,7 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate counting_lines2" do
-    count_lines2("example_file.txt").should eql __
+    expect(count_lines2("example_file.txt")).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -84,7 +84,7 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate finding_lines2" do
-    find_line2("example_file.txt").should eql __
+    expect(find_line2("example_file.txt")).to eql __
   end
 
   # ------------------------------------------------------------------
@@ -100,6 +100,6 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate open_handles_the_file_sandwich_when_given_a_block" do
-    count_lines3("example_file.txt").should eql __
+    expect(count_lines3("example_file.txt")).to eql __
   end
 end

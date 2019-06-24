@@ -11,23 +11,23 @@ describe "True and False" do
   end
 
   it "should demonstrate true_is_treated_as_true" do
-    truth_value(true).should eql __
+    expect(truth_value(true)).to eql __
   end
 
   it "should demonstrate false_is_treated_as_false" do
-    truth_value(false).should eql __
+    expect(truth_value(false)).to eql __
   end
 
   it "should demonstrate nil_is_treated_as_false_too" do
-    truth_value(nil).should eql __
+    expect(truth_value(nil)).to eql __
   end
 
   it "should demonstrate everything_else_is_treated_as_true" do
-    truth_value(1).should eql __
-    truth_value(0).should eql __
-    truth_value([]).should eql __
-    truth_value({}).should eql __
-    truth_value("Strings").should eql __
-    truth_value("").should eql __
+    expect(truth_value(1)).to eql __
+    expect(truth_value(0)).to eql __
+    expect(truth_value([])).to eql __
+    expect(truth_value({})).to eql __
+    expect(truth_value("Strings")).to eql __
+    expect(truth_value("")).to eql __
   end
 end
