@@ -8,18 +8,18 @@ describe "Methods" do
 
 
   it "should demonstrate calling_global_methods" do
-    expect(my_global_method(2,3)).to eql __
+    expect(my_global_method(2,3)).to eql 5
   end
 
   it "should demonstrate calling_global_methods_without_parentheses" do
     result = my_global_method 2, 3
-    expect(result).to eql __
+    expect(result).to eql 5
   end
 
   # (NOTE: We are Using eval below because the example code is
   # considered to be syntactically invalid).
   it "should demonstrate sometimes_missing_parentheses_are_ambiguous" do
-    eval "expect(5).should eql my_global_method 2, 3" # ENABLE CHECK
+    # eval "expect(5).should eql my_global_method 2, 3" # ENABLE CHECK
                                                  #
                                                  # Ruby doesn't know if you mean:
                                                  #
@@ -29,14 +29,15 @@ describe "Methods" do
                                                  #
                                                  # Rewrite the eval string to continue.
                                                  #
+    eval "expect(5).to(eql(my_global_method(2,3)))"
   end
 
   # NOTE: wrong number of argument is not a SYNTAX error, but a
   # runtime error.
   it "should demonstrate calling_global_methods_with_wrong_number_of_arguments" do
-    expect{ my_global_method }.to raise_error(__, /__/)
+    expect{ my_global_method }.to raise_error(ArgumentError, /wrong number of arguments/)
 
-    expect{ my_global_method(1,2,3) }.to raise_error(__, /__/)
+    expect{ my_global_method(1,2,3) }.to raise_error(ArgumentError, /wrong number of arguments/)
   end
 
   # ------------------------------------------------------------------
@@ -46,8 +47,8 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_with_default_values" do
-    expect(method_with_defaults(1)).to eql [1, __]
-    expect(method_with_defaults(1, 2)).to eql [1, __]
+    expect(method_with_defaults(1)).to eql [1, :default_value]
+    expect(method_with_defaults(1, 2)).to eql [1, 2]
   end
 
   # ------------------------------------------------------------------
@@ -57,10 +58,10 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_with_variable_arguments" do
-    expect(method_with_var_args.class).to eql __
-    expect(method_with_var_args).to eql __
-    expect(method_with_var_args(:one)).to eql __
-    expect(method_with_var_args(:one, :two)).to eql __
+    expect(method_with_var_args.class).to eql Array
+    expect(method_with_var_args).to eql []
+    expect(method_with_var_args(:one)).to eql [:one]
+    expect(method_with_var_args(:one, :two)).to eql [:one, :two]
   end
 
   # ------------------------------------------------------------------
@@ -72,7 +73,7 @@ describe "Methods" do
   end
 
   it "should demonstrate method_with_explicit_return" do
-    expect(method_with_explicit_return).to eql __
+    expect(method_with_explicit_return).to eql :return_value
   end
 
   # ------------------------------------------------------------------
@@ -83,7 +84,7 @@ describe "Methods" do
   end
 
   it "should demonstrate method_without_explicit_return" do
-    expect(method_without_explicit_return).to eql __
+    expect(method_without_explicit_return).to eql :return_value
   end
 
   # ------------------------------------------------------------------
@@ -93,11 +94,11 @@ describe "Methods" do
   end
 
   it "should demonstrate calling_methods_in_same_class" do
-    expect(my_method_in_the_same_class(3,4)).to eql __
+    expect(my_method_in_the_same_class(3,4)).to eql 12
   end
 
   it "should demonstrate calling_methods_in_same_class_with_explicit_receiver" do
-    expect(self.my_method_in_the_same_class(3,4)).to eql __
+    expect(self.my_method_in_the_same_class(3,4)).to eql 12
   end
 
   # ------------------------------------------------------------------
@@ -108,11 +109,12 @@ describe "Methods" do
   private :my_private_method
 
   it "should demonstrate calling_private_methods_without_receiver" do
-    expect(my_private_method).to eql __
+    expect(my_private_method).to eql "a secret"
   end
 
   it "should demonstrate calling_private_methods_with_an_explicit_receiver" do
-    expect(self.my_private_method).to raise_error(__, /__/)
+    # TODO: RSpec fix and lesson?
+    expect { self.my_private_method }.not_to raise_error NoMethodError
   end
 
   # ------------------------------------------------------------------
@@ -131,11 +133,12 @@ describe "Methods" do
 
   it "should demonstrate calling_methods_in_other_objects_require_explicit_receiver" do
     rover = Dog.new
-    expect(rover.name).to eql __
+    expect(rover.name).to eql "Fido"
   end
 
   it "should demonstrate calling_private_methods_in_other_objects" do
     rover = Dog.new
-    expect(rover.tail).to raise_error __
+    # TODO: Fix RSpec syntax.
+    expect { rover.tail }.to raise_error NoMethodError
   end
 end

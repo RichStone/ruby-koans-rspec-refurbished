@@ -14,7 +14,7 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate counting_lines" do
-    expect(count_lines("example_file.txt")).to eql __
+    expect(count_lines("example_file.txt")).to eql 2
   end
 
   # ------------------------------------------------------------------
@@ -22,14 +22,14 @@ describe "Sandwich Code" do
   def find_line(file_name)
     file = open(file_name)
     while line = file.gets
-      return line if line.match(/e/)
+      return line if line.match(/huhu/)
     end
   ensure
     file.close if file
   end
 
   it "should demonstrate finding_lines" do
-    expect(find_line("example_file.txt")).to eql __
+    expect(find_line("example_file.txt")).to eql "huhu\n"
   end
 
   # ------------------------------------------------------------------
@@ -74,17 +74,22 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate counting_lines2" do
-    expect(count_lines2("example_file.txt")).to eql __
+    expect(count_lines2("example_file.txt")).to eql 2
   end
 
   # ------------------------------------------------------------------
 
   def find_line2(file_name)
     # Rewrite find_line using the file_sandwich library function.
+    file_sandwich(file_name) do |file|
+      while line = file.gets
+        return line if line.match(/huhu/)
+      end
+    end
   end
 
   it "should demonstrate finding_lines2" do
-    expect(find_line2("example_file.txt")).to eql __
+    expect(find_line2("example_file.txt")).to eql "huhu\n"
   end
 
   # ------------------------------------------------------------------
@@ -100,6 +105,6 @@ describe "Sandwich Code" do
   end
 
   it "should demonstrate open_handles_the_file_sandwich_when_given_a_block" do
-    expect(count_lines3("example_file.txt")).to eql __
+    expect(count_lines3("example_file.txt")).to eql 2
   end
 end

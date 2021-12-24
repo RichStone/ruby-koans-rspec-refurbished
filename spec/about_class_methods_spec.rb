@@ -7,45 +7,47 @@ describe "Class Methods" do
 
   it "should demonstrate objects_are_objects" do
     fido = Dog.new
-    expect(fido.is_a?(Object)).to eql __
+    expect(fido.is_a?(Object)).to eql true
   end
 
   it "should demonstrate classes_are_classes" do
-    expect(Dog.is_a?(Class)).to eql __
+    expect(Dog.is_a?(Class)).to eql true
   end
 
   it "should demonstrate classes_are_objects_too" do
-    expect(Dog.is_a?(Object)).to eql __
+    expect(Dog.is_a?(Object)).to eql true
   end
 
   it "should demonstrate objects_have_methods" do
     fido = Dog.new
-    expect(fido.methods.size).to be > _n_
+    expect(fido.methods.size).to be > 10
   end
 
   it "should demonstrate classes_have_methods" do
-    expect(Dog.methods.size).to be > _n_
+    expect(Dog.methods.size).to be > 10
   end
 
   it "should demonstrate you_can_define_methods_on_individual_objects" do
     fido = Dog.new
 
-    def fido.wag
+    def fido.gag
       :fidos_wag
     end
 
-    expect(fido.wag).to eql __
+    expect(fido.gag).to eql :fidos_wag
   end
 
   it "should demonstrate other_objects_are_not_affected_by_these_singleton_methods" do
     fido = Dog.new
     rover = Dog.new
 
-    def fido.wag
+    def fido.lag
       :fidos_wag
     end
 
-    expect(rover.wag).to raise_error(__)
+    # TODO: Fix RSpec syntax.
+    # TODO: Fix exercise, test dependency again, wag is already defined.
+    expect { rover.lag }.to raise_error(NoMethodError)
   end
 
   # ------------------------------------------------------------------
@@ -61,13 +63,13 @@ describe "Class Methods" do
   end
 
   it "should demonstrate since_classes_are_objects_you_can_define_singleton_methods_on_them_too" do
-    expect(Dog2.wag).to eql __
+    expect(Dog2.wag).to eql :class_level_wag
   end
 
   it "should demonstrate class_methods_are_independent_of_instance_methods" do
     fido = Dog2.new
-    expect(fido.wag).to eql __
-    expect(Dog2.wag).to eql __
+    expect(fido.wag).to eql :instance_level_wag
+    expect(Dog2.wag).to eql :class_level_wag
   end
 
   # ------------------------------------------------------------------
@@ -83,8 +85,8 @@ describe "Class Methods" do
   it "should demonstrate classes_and_instances_do_not_share_instance_variables" do
     fido = Dog.new
     fido.name = "Fido"
-    expect(fido.name).to eql __
-    expect(Dog.name).to eql __
+    expect(fido.name).to eql "Fido"
+    expect(Dog.name).to eql nil
   end
 
   # ------------------------------------------------------------------
@@ -96,7 +98,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate you_can_define_class_methods_inside_the_class" do
-    expect(Dog.a_class_method).to eql __
+    expect(Dog.a_class_method).to eql :dogs_class_method
   end
 
 
@@ -107,7 +109,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate class_statements_return_the_value_of_their_last_expression" do
-    expect(LastExpressionInClassStatement).to eql __
+    expect(LastExpressionInClassStatement).to eql 21
   end
 
   # ------------------------------------------------------------------
@@ -117,7 +119,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate self_while_inside_class_is_class_object_not_instance" do
-    expect(Dog == SelfInsideOfClassStatement).to eql __
+    expect(Dog == SelfInsideOfClassStatement).to eql true
   end
 
   # ------------------------------------------------------------------
@@ -129,7 +131,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate you_can_use_self_instead_of_an_explicit_reference_to_dog" do
-    expect(Dog.class_method2).to eql __
+    expect(Dog.class_method2).to eql :another_way_to_write_class_methods
   end
 
   # ------------------------------------------------------------------
@@ -143,7 +145,7 @@ describe "Class Methods" do
   end
 
   it "should demonstrate heres_still_another_way_to_write_class_methods" do
-    expect(Dog.another_class_method).to eql __
+    expect(Dog.another_class_method).to eql :still_another_way
   end
 
   # THINK ABOUT IT:
@@ -161,11 +163,15 @@ describe "Class Methods" do
   #
   # Which do you prefer and why?
   # Are there times you might prefer one over the other?
+  #
+  # => Lots of class methods: class << self
+  # => Few class methods: def self.meth
+  # READABILITY
 
   # ------------------------------------------------------------------
 
   it "should demonstrate heres_an_easy_way_to_call_class_methods_from_instance_methods" do
     fido = Dog.new
-    expect(fido.class.another_class_method).to eql __
+    expect(fido.class.another_class_method).to eql :still_another_way
   end
 end

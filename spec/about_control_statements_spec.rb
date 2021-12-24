@@ -8,7 +8,7 @@ describe "Control Statements" do
     else
       result = :false_value
     end
-    expect(result).to eql __
+    expect(result).to eql :true_value
   end
 
   it "should demonstrate if_then_statements" do
@@ -16,7 +16,7 @@ describe "Control Statements" do
     if true
       result = :true_value
     end
-    expect(result).to eql __
+    expect(result).to eql :true_value
   end
 
   it "should demonstrate if_statements_return_values" do
@@ -25,14 +25,14 @@ describe "Control Statements" do
             else
               :false_value
             end
-    expect(value).to eql __
+    expect(value).to eql :true_value
 
     value = if false
               :true_value
             else
               :false_value
             end
-    expect(value).to eql __
+    expect(value).to eql :false_value
 
     # NOTE: Actually, EVERY statement in Ruby will return a value, not
     # just if statements.
@@ -42,19 +42,19 @@ describe "Control Statements" do
     value = if false
               :true_value
             end
-    expect(value).to eql __
+    expect(value).to eql nil
   end
 
   it "should demonstrate condition_operators" do
-    expect(true ? :true_value : :false_value).to eql __
-    expect(false ? :true_value : :false_value).to eql __
+    expect(true ? :true_value : :false_value).to eql :true_value
+    expect(false ? :true_value : :false_value).to eql :false_value
   end
 
   it "should demonstrate if_statement_modifiers" do
     result = :default_value
     result = :true_value if true
 
-    expect(result).to eql __
+    expect(result).to eql :true_value
   end
 
   it "should demonstrate unless_statement" do
@@ -62,7 +62,7 @@ describe "Control Statements" do
     unless false    # same as saying 'if !false', which evaluates as 'if true'
       result = :false_value
     end
-    expect(result).to eql __
+    expect(result).to eql :false_value
   end
 
   it "should demonstrate unless_statement_evaluate_true" do
@@ -70,14 +70,14 @@ describe "Control Statements" do
     unless true    # same as saying 'if !true', which evaluates as 'if false'
       result = :true_value
     end
-    expect(result).to eql __
+    expect(result).to eql :default_value
   end
 
   it "should demonstrate unless_statement_modifier" do
     result = :default_value
     result = :false_value unless false
 
-    expect(result).to eql __
+    expect(result).to eql :false_value
   end
 
   it "should demonstrate while_statement" do
@@ -87,7 +87,7 @@ describe "Control Statements" do
       result = result * i
       i += 1
     end
-    expect(result).to eql __
+    expect(result).to eql 3628800
   end
 
   it "should demonstrate break_statement" do
@@ -98,7 +98,7 @@ describe "Control Statements" do
       result = result * i
       i += 1
     end
-    expect(result).to eql __
+    expect(result).to eql 3628800
   end
 
   it "should demonstrate break_statement_returns_values" do
@@ -108,7 +108,7 @@ describe "Control Statements" do
                i += 1
              end
 
-    expect(result).to eql __
+    expect(result).to eql 2
   end
 
   it "should demonstrate next_statement" do
@@ -119,7 +119,7 @@ describe "Control Statements" do
       next if (i % 2) == 0
       result << i
     end
-    expect(result).to eql __
+    expect(result).to eql [1, 3, 5, 7, 9]
   end
 
   it "should demonstrate for_statement" do
@@ -128,6 +128,6 @@ describe "Control Statements" do
     for item in array
       result << item.upcase
     end
-    expect(result).to eql [__, __, __]
+    expect(result).to eql ["FISH", "AND", "CHIPS"]
   end
 end

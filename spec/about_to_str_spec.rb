@@ -10,11 +10,11 @@ describe "to_str" do
 
   it "should demonstrate to_s_returns_a_string_representation" do
     not_like_a_string = CanNotBeTreatedAsString.new
-    expect(not_like_a_string.to_s).to eql __
+    expect(not_like_a_string.to_s).to eql "non-string-like"
   end
 
   it "should demonstrate normally_objects_cannot_be_used_where_strings_are_expected" do
-    expect(File.exist?(CanNotBeTreatedAsString.new)).to raise_error(__)
+    expect { File.exist?(CanNotBeTreatedAsString.new) }.to raise_error(TypeError)
   end
 
   # ------------------------------------------------------------------
@@ -31,11 +31,11 @@ describe "to_str" do
 
   it "should demonstrate to_str_also_returns_a_string_representation" do
     like_a_string = CanBeTreatedAsString.new
-    expect(like_a_string.to_str).to eql __
+    expect(like_a_string.to_str).to eql "string-like"
   end
 
   it "should demonstrate to_str_allows_objects_to_be_treated_as_strings" do
-    expect(File.exist?(CanBeTreatedAsString.new)).to eql __
+    expect(File.exist?(CanBeTreatedAsString.new)).to eql false
   end
 
   # ------------------------------------------------------------------
@@ -46,7 +46,7 @@ describe "to_str" do
   end
 
   it "should demonstrate user_defined_code_can_check_for_to_str" do
-    expect(acts_like_a_string?(CanNotBeTreatedAsString.new)).to eql __
-    expect(acts_like_a_string?(CanBeTreatedAsString.new)).to eql __
+    expect(acts_like_a_string?(CanNotBeTreatedAsString.new)).to eql false
+    expect(acts_like_a_string?(CanBeTreatedAsString.new)).to eql true
   end
 end

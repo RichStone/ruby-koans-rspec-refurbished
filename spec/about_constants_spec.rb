@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'about_constants'
 
 C = "top level"
 
@@ -7,16 +8,16 @@ describe "Constants" do
   C = "nested"
 
   it "should demonstrate nested_constants_may_also_be_referenced_with_relative_paths" do
-    expect(C).to eql __
+    expect(C).to eql "nested"
   end
 
   it "should demonstrate top_level_constants_are_referenced_by_double_colons" do
-    expect(::C).to eql __
+    expect(::C).to eql "nested"
   end
 
   it "should demonstrate nested_constants_are_referenced_by_their_complete_path" do
-    expect(AboutConstants::C).to eql __
-    expect(::AboutConstants::C).to eql __
+    expect(AboutConstants::C).to eql "HUH"
+    expect(::AboutConstants::C).to eql "HUH"
   end
 
   # ------------------------------------------------------------------
@@ -35,7 +36,7 @@ describe "Constants" do
   end
 
   it "should demonstrate nested_classes_inherit_constants_from_enclosing_classes" do
-    expect(Animal::NestedAnimal.new.legs_in_nested_animal).to eql __
+    expect(Animal::NestedAnimal.new.legs_in_nested_animal).to eql 4
   end
 
   # ------------------------------------------------------------------
@@ -47,7 +48,7 @@ describe "Constants" do
   end
 
   it "should demonstrate subclasses_inherit_constants_from_parent_classes" do
-    expect(Reptile.new.legs_in_reptile).to eql __
+    expect(Reptile.new.legs_in_reptile).to eql 4
   end
 
   # ------------------------------------------------------------------
@@ -63,7 +64,7 @@ describe "Constants" do
   end
 
   it "should demonstrate who_wins_with_both_nested_and_inherited_constants" do
-    expect(MyAnimals::Bird.new.legs_in_bird).to eql __
+    expect(MyAnimals::Bird.new.legs_in_bird).to eql 2
   end
 
   # QUESTION: Which has precedence: The constant in the lexical scope,
@@ -78,7 +79,7 @@ describe "Constants" do
   end
 
   it "should demonstrate who_wins_with_explicit_scoping_on_class_definition" do
-    expect(MyAnimals::Oyster.new.legs_in_oyster).to eql __
+    expect(MyAnimals::Oyster.new.legs_in_oyster).to eql 4
   end
 
   # QUESTION: Now which has precedence: The constant in the lexical

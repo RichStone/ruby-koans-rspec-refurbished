@@ -9,7 +9,7 @@ describe "Open Classes" do
 
   it "should demonstrate as_defined_dogs_do_bark" do
     fido = Dog.new
-    expect(fido.bark).to eql __
+    expect(fido.bark).to eql "WOOF"
   end
 
   # ------------------------------------------------------------------
@@ -23,8 +23,8 @@ describe "Open Classes" do
 
   it "should demonstrate after_reopening_dogs_can_both_wag_and_bark" do
     fido = Dog.new
-    expect(fido.wag).to eql __
-    expect(fido.bark).to eql __
+    expect(fido.wag).to eql "HAPPY"
+    expect(fido.bark).to eql "WOOF"
   end
 
   # ------------------------------------------------------------------
@@ -36,8 +36,8 @@ describe "Open Classes" do
   end
 
   it "should demonstrate even_existing_built_in_classes_can_be_reopened" do
-    expect(1.even?).to eql __
-    expect(2.even?).to eql __
+    expect(1.even?).to eql false
+    expect(2.even?).to eql true
   end
 
   # NOTE: To understand why we need the :: before Integer, you need to

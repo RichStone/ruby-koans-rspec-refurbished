@@ -6,10 +6,10 @@ describe "Exceptions" do
   end
 
   it "should demonstrate exceptions_inherit_from_Exception" do
-    expect(MySpecialError.ancestors[1]).to eql __
-    expect(MySpecialError.ancestors[2]).to eql __
-    expect(MySpecialError.ancestors[3]).to eql __
-    expect(MySpecialError.ancestors[4]).to eql __
+    expect(MySpecialError.ancestors[1]).to eql RuntimeError
+    expect(MySpecialError.ancestors[2]).to eql StandardError
+    expect(MySpecialError.ancestors[3]).to eql Exception
+    expect(MySpecialError.ancestors[4]).to eql Object
   end
 
   it "should demonstrate rescue_clause" do
@@ -20,15 +20,15 @@ describe "Exceptions" do
       result = :exception_handled
     end
 
-    expect(result).to eql __
+    expect(result).to eql :exception_handled
 
-    expect(ex.is_a?(StandardError)).to eql(__), "Should be a Standard Error"
-    expect(ex.is_a?(RuntimeError)).to eql(__), "Should be a Runtime Error"
+    expect(ex.is_a?(StandardError)).to eql(true), "Should be a Standard Error"
+    expect(ex.is_a?(RuntimeError)).to eql(true), "Should be a Runtime Error"
 
-    expect(RuntimeError.ancestors.include?(StandardError)).to be_true,
-                                                              "RuntimeError is a subclass of StandardError"
+    # TODO: Fix RSpec.
+    expect(RuntimeError.ancestors.include?(StandardError)).to eql true # "RuntimeError is a subclass of StandardError"
 
-    expect(ex.message).to eql __
+    expect(ex.message).to eql "Oops"
   end
 
   it "should demonstrate raising_a_particular_error" do
@@ -40,8 +40,8 @@ describe "Exceptions" do
       result = :exception_handled
     end
 
-    expect(result).to eql __
-    expect(ex.message).to eql __
+    expect(result).to eql :exception_handled
+    expect(ex.message).to eql "My Message"
   end
 
   it "should demonstrate ensure_clause" do
@@ -54,12 +54,13 @@ describe "Exceptions" do
       result = :always_run
     end
 
-    expect(result).to eql __
+    expect(result).to eql :always_run
   end
 
   # Sometimes, we must know about the unknown
   it "should demonstrate asserting_an_error_is_raised" do
     # A do-end is a block, a topic to explore more later
-    expect(raise MySpecialError.new("New instances can be raised directly.")).to raise_error(__)
+    # TODO: Fix RSpec syntax.
+    expect { raise MySpecialError.new("New instances can be raised directly.") }.to raise_error(MySpecialError)
   end
 end

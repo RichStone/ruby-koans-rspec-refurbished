@@ -13,7 +13,8 @@ describe "Modules" do
   end
 
   it "should demonstrate cant_instantiate_modules" do
-    expect(Nameable.new).to raise_error(__)
+    # TODO: Fix RSpec.
+    expect { Nameable.new }.to raise_error(NoMethodError)
   end
 
   # ------------------------------------------------------------------
@@ -38,23 +39,23 @@ describe "Modules" do
 
   it "should demonstrate normal_methods_are_available_in_the_object" do
     fido = Dog.new
-    expect(fido.bark).to eql __
+    expect(fido.bark).to eql "WOOF"
   end
 
   it "should demonstrate module_methods_are_also_available_in_the_object" do
     fido = Dog.new
-    expect(expect(fido.set_name("Rover"))).not_to raise_error
+    expect { fido.set_name("Rover") }.not_to raise_error
   end
 
   it "should demonstrate module_methods_can_affect_instance_variables_in_the_object" do
     fido = Dog.new
-    expect(fido.name).to eql __
+    expect(fido.name).to eql "Fido"
     fido.set_name("Rover")
-    expect(fido.name).to eql __
+    expect(fido.name).to eql "Rover"
   end
 
   it "should demonstrate classes_can_override_module_methods" do
     fido = Dog.new
-    expect(fido.here).to eql __
+    expect(fido.here).to eql :in_object
   end
 end
